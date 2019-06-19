@@ -4,6 +4,8 @@ import 'antd/dist/antd.css';
 import { Input } from 'antd';
 import { List, Avatar, Icon } from 'antd';
 import Header from './Tabs';
+import SelectCountry from './News'
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 const Search = Input.Search;
 
@@ -16,9 +18,11 @@ const IconText = ({ type, text }) => (
 
 class App extends React.Component{
 
-constructor(props){
-    super(props)
-    this.state = {}
+constructor(){
+  super()
+    this.state = {};
+   // this.props.Change={};
+   
 }
 
 componentDidMount(){
@@ -26,10 +30,8 @@ componentDidMount(){
 }
 
 getNews(){
-
-    var url = 'https://newsapi.org/v2/top-headlines?' +
-    'country=in&' +
-    'apiKey=3c441607425442deb9266c094691a026';
+    
+    var url = 'https://newsapi.org/v2/top-headlines?' +'country=in&' +'apiKey=3c441607425442deb9266c094691a026';
 
     axios.get(url)
     .then((res)=>{
@@ -41,6 +43,19 @@ getNews(){
 
 }
 
+
+// getSources(){
+//   var url = 'https://newsapi.org/v2/sources?'+'apiKey=3c441607425442deb9266c094691a026';
+//     axios.get(url)
+//     .then((res)=>{
+//       console.log(res.data.articles)
+//       this.setState({
+//         articles : res.data.articles
+//       })
+//     })
+
+
+// }
 searchNews(search){
     var url = 'https://newsapi.org/v2/top-headlines?' +
     'country=in&' +
@@ -54,20 +69,33 @@ searchNews(search){
      })
     })
 }
+Change = (event)=>{
+  console.log(`selected ${event}`);
+  var url = 'https://newsapi.org/v2/top-headlines?' +`country=${event}&` +'apiKey=3c441607425442deb9266c094691a026';
+
+    axios.get(url)
+    .then((res)=>{
+        console.log(res.data);
+        this.setState({
+          articles : res.data.articles
+        })
+    })
+  }
 
 
 render(){
-    return (
+    return (  
+
         <div>
           <div>
             <h1 className="h1">NewsHunt</h1>
           </div>
-          <div>
-          <Header></Header>
-          </div>
           
-          
+          {/* <Header></Header> */}
+          <Router>   <SelectCountry Change={this.Change}></SelectCountry>      </Router>
+            
     <Search placeholder="input search text" onSearch={value => this.searchNews(value)} enterButton />
+    <Route path="/country" exact component={SelectCountry}/>
 
             <List
     itemLayout="vertical"
@@ -81,7 +109,7 @@ render(){
     dataSource={this.state.articles}
     footer={
       <div>
-        <b>ant design</b> footer part
+        <b>Next Page</b> 
       </div>
     }
     renderItem={item => (
@@ -110,6 +138,8 @@ render(){
     )}
   />
         </div>
+        
+        
     )
 }    
 
