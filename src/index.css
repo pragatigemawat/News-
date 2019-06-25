@@ -1,10 +1,11 @@
 body {
-  margin: 0;
+  margin: 0; 
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-image: url("https://www.google.com/imgres?imgurl=https%3A%2F%2Fpagefair.com%2Fwp-content%2Fuploads%2F2013%2F09%2Fblog6.jpg&imgrefurl=https%3A%2F%2Fpagefair.com%2Fblog%2F2014%2Fad-news-for-publishers-4%2F&docid=3KCIdZVRVoCWBM&tbnid=YUjzjvbCTN0p2M%3A&vet=10ahUKEwiTqrnRjP3iAhVPfysKHYnsDT8QMwh-KAIwAg..i&w=1600&h=1200&safe=active&bih=722&biw=1536&q=news&ved=0ahUKEwiTqrnRjP3iAhVPfysKHYnsDT8QMwh-KAIwAg&iact=mrc&uact=8") */
 }
 
 code {
