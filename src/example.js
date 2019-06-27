@@ -13,7 +13,7 @@ class SelectCategory extends React.Component {
 
   render() {
     return (
-      // <Dropdown>
+     
       
       <Dropdown >
       <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
@@ -31,7 +31,7 @@ class SelectCategory extends React.Component {
     </Dropdown>
     
        
-        // </Dropdown>
+  
     );
   }
 }

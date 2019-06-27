@@ -178,8 +178,6 @@ render(){
              </Search>
              <SelectSource  Esource={this.Esource}></SelectSource>
              <SelectCountry Change={this.Change} ></SelectCountry>
-            
-          
           <SelectCategory Category={this.Category}></SelectCategory> 
           </div>
          <List

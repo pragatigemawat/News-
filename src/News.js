@@ -19,11 +19,7 @@ return(
   
   <div>
   
-    {/* <Dropdown overlay={menu}>
-  
-       <Icon type="down" />
     
-  </Dropdown> */}
  <Menu mode="horizontal" value="" style={{ width: 500 }} >
  <Menu.Item value="in" onClick={()=>{this.props.Change("in")}}> 
            India
@@ -55,23 +51,6 @@ return(
         </Menu>
 
 
-    {/* <Link to ="/country"></Link> */}
-    {/* <Select defaultValue="Please Select Any Country" >
-      
-      <Option value="in">India</Option>
-      <Option value="au">Australia</Option>
-      <Option value="jp">Japan</Option>
-      <Option value="my">Malaysia</Option>
-      <Option value="fr">France</Option>
-      <Option value="ae">UAE</Option>
-      <Option value="nz">New Zealand</Option>
-      <Option value="za">South Africa</Option>
-      <Option value="gb">United Kingdom</Option>
-      <Option value="us">United States </Option>
-      <Option value="cn">China</Option>
-      <Option value="ru">Russia</Option>
-    </Select>
-     */}
       
   </div>
   
