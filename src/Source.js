@@ -61,6 +61,7 @@ return(
       <Option value="entertainment-weekly">Entertainment Weekly</Option>
       <Option value="crypto-coins-news">Crypto Coins News</Option>
       <Option value="google-news">Google News </Option>
+      <Option value="cnbc">CNBC </Option>
       <Option value="national-geographic">National Geographic</Option>
       <Option value="the-times-of-india">The Times Of India</Option>
       

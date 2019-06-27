@@ -21,11 +21,14 @@ const IconText = ({ type, text }) => (
   );
 
 class App extends React.Component{
-
-constructor(){
-  super()
-    this.state = {};
+constructor(props){
+  super(props)
+  this.state={}
+   
+  this.state.duedate=""
 }
+ 
+  
 
 componentDidMount(){
     this.getNews();
@@ -90,9 +93,35 @@ searchNews(search){
      })
     })
 }
-Change = (event)=>{
-  console.log(`selected ${event}`);
-  var url = 'https://newsapi.org/v2/top-headlines?' +`country=${event}&` +'apiKey=3c441607425442deb9266c094691a026';
+// sortFun(e) {
+//   if (e.target.value == 'by date') {
+
+//     let temp = this.state.list
+
+
+//     let arr = temp.sort(function(a, b){
+
+//       var dateA=new Date(a.duedate), dateB=new Date(b.duedate)
+
+//       return dateA-dateB
+
+//     })
+
+//     this.setState({
+
+//       list: arr
+
+//     })
+
+// }
+// }
+Change = (value)=>{
+  console.log(`selected ${value}`);
+  this.setState(
+    {country:value}
+  )
+  
+   var url = 'https://newsapi.org/v2/top-headlines?' +`country=${value}&` +'apiKey=3c441607425442deb9266c094691a026';
 
     axios.get(url)
     .then((res)=>{
@@ -115,11 +144,16 @@ Esource= (event)=>{
         })
     })
   }
-  Category = (e,i) => {
+  Category = (value) => {
     //let x = this.state;
 
-    console.log(`selected ${e}`);
-       var url = 'https://newsapi.org/v2/top-headlines?country=in&' + `category=${e}&`+ 'apiKey=3c441607425442deb9266c094691a026';
+    console.log(`selected ${value}`);
+    this.setState(
+      {category:value}
+    ) 
+    
+      
+       var url = `https://newsapi.org/v2/top-headlines?country=${this.state.country}&category=${value}&`+ 'apiKey=3c441607425442deb9266c094691a026';
     
          axios.get(url)
          .then((res)=>{
@@ -131,43 +165,23 @@ Esource= (event)=>{
     })
   })
 }
-
-  // Category= (event)=>{
-  //   console.log(`selected ${event}`);
-  //   var url = 'https://newsapi.org/v2/top-headlines?' +`country=${event}&`+ `category=${event}&`+ 'apiKey=3c441607425442deb9266c094691a026';
-  
-  //     axios.get(url + "&q=")
-  //     .then((res)=>{
-  //         console.log(res.data);
-  //         this.setState({
-  //           articles : res.data.articles
-  //         })
-  //     })
-  //   }
-
 render(){
+  
+  
     return (  
  
           <div>
           <div>
-            <h1 className="h1">NewsHunt</h1>
+            <h1 className="h1" style={{ width: 350,marginLeft: 600}}>NewsHunt</h1>
             <Search placeholder="Search"  style={{ width: 350,marginLeft: 500 }} onSearch={value => this.searchNews(value)} enterButton>
             
              </Search>
+             <SelectSource  Esource={this.Esource}></SelectSource>
+             <SelectCountry Change={this.Change} ></SelectCountry>
+            
+          
+          <SelectCategory Category={this.Category}></SelectCategory> 
           </div>
-          <SelectCategory Category={this.Category}></SelectCategory>
-          
-          
-   
-         <div className="Row">
-          <div className="Col-6">
-          <SelectCountry Change={this.Change}></SelectCountry> 
-          <SelectSource  Esource={this.Esource}></SelectSource>
-          {/* <SelectCategory Category={this.Category}></SelectCategory> */}
-        </div>
-        </div>
-   
-        {/* <p>{this.formatDate(.publishedAt)}</p> */}
          <List
     itemLayout="vertical"
     size="medium"
